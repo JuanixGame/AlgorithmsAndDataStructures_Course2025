@@ -23,7 +23,7 @@ void Refugio::showInfo() const
 
 void Refugio::doAction() const
 {
-    std::runtime_error("Not implemented yet");
+    throw std::runtime_error("Not implemented yet");
 }
 
 void Refugio::addRefugee(const std::string& refugee)
