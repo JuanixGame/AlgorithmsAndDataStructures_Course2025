@@ -28,16 +28,29 @@ void Refugio::doAction() const
 
 void Refugio::addRefugee(const std::string& refugee)
 {
-    std::runtime_error("Not implemented yet");
+    m_refugees.push_back(refugee);
 }
 
 void Refugio::addResource(const std::string& resource, float amount)
 {
-    std::runtime_error("Not implemented yet");
+    m_resources.push_back(std::pair<std::string, int>(resource,amount));
 }
 
 bool Refugio::consumeResource(const std::string& resource, float amount)
-{
-    std::runtime_error("Not implemented yet");
+{// casos: el recurso no existe, la cantidad es negativa, no hay suficientes recursos
+    if (amount<=0) return false;
+    
+    for (size_t i = 0; i < m_resources.size(); i++)
+    {
+        if (m_resources[i].first==resource)
+        {
+            if (m_resources[i].second>=amount)
+            {
+                m_resources[i].second-=amount;
+                return true;
+            }else {std::cout<<"La cantidad pedida, exede la contenida"<<std::endl; return false;}
+        }
+    }
+    std::cout<<"El recurso pedido no existe"<<std::endl;
     return false;
 }
